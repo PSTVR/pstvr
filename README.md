@@ -1,16 +1,60 @@
-## Hi there 👋
+<div align="center">
 
-<!--
-**PSTVR/pstvr** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+# xypes
 
-Here are some ideas to get you started:
+### developer • designer • professional bug creator
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+building cool shit and occasionally breaking it.
+
+<br>
+
+<img src="https://skillicons.dev/icons?i=js,html,css,java,nodejs,python,git,github,vscode&perline=9" />
+
+<br><br>
+
+---
+
+### currently
+
+working on **websites, minecraft projects & desktop apps**
+
+learning more about **software engineering & cybersecurity**
+
+probably fixing something that worked 5 minutes ago
+
+---
+
+### projects
+
+**xypes**  
+personal portfolio & random experiments
+
+**FEMCLIENT**  
+custom Minecraft client project
+
+**AegisJar**  
+defensive Java / Minecraft malware scanner
+
+---
+
+### languages & tools
+
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=PSTVR&layout=compact&hide_border=true&theme=transparent" />
+
+<br>
+
+<img src="https://github-readme-stats.vercel.app/api?username=PSTVR&show_icons=true&hide_border=true&theme=transparent" />
+
+---
+
+### find me
+
+Discord — **xypes.lol**
+
+<img src="https://komarev.com/ghpvc/?username=PSTVR&style=flat-square&label=profile+views" />
+
+<br><br>
+
+<sub>made with questionable amounts of debugging</sub>
+
+</div>
