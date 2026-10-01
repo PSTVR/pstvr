@@ -1,19 +1,11 @@
 <div align="center">
 
-<!-- ✦ MAIN BANNER ✦ -->
 <a href="https://discord.com/users/1150057914967531651">
   <img src="./banner.gif" width="100%" alt="xypes">
 </a>
 
 <br>
 
-<!-- ✦ ANIMATED INTRO ✦ -->
-<img
-  src="https://readme-typing-svg.demolab.com?font=Nunito&weight=700&size=16&duration=2600&pause=1200&color=8FC8FF&center=true&vCenter=true&width=520&height=38&lines=%F0%9F%AB%A7+welcome+to+my+little+blue+world+%F0%9F%AB%A7;%E2%98%81%EF%B8%8F+xypes+%E2%98%81%EF%B8%8F;%E2%99%A1+stay+for+a+while+%E2%99%A1"
-  alt="xypes intro"
-/>
-
-<!-- ✦ SOCIAL ICONS ✦ -->
 <a href="https://www.tiktok.com/@pstvroffical">
   <img src="https://cdn.simpleicons.org/tiktok/8FC8FF" height="25" alt="TikTok">
 </a>
@@ -28,54 +20,44 @@
 
 <br><br>
 
-<sub>🫧　🩵　⋆｡˚ ☁️ ˚｡⋆　🩵　🫧</sub>
+<sub>🩵　🫧　☁️　🫧　🩵</sub>
 
 <br><br>
 
-<!-- ✦ ANIME STRIP ✦ -->
 <a href="https://www.tiktok.com/@pstvroffical">
-  <img src="./rem1.gif" width="31%" alt="TikTok">
+  <img src="./scene1.gif" width="31%" alt="TikTok scene">
 </a>
 &nbsp;
 <a href="https://www.roblox.com/users/3595727417/profile">
-  <img src="./rem2.gif" width="31%" alt="Roblox">
+  <img src="./scene2.gif" width="31%" alt="Roblox scene">
 </a>
 &nbsp;
 <a href="https://discord.com/users/1150057914967531651">
-  <img src="./rem3.gif" width="31%" alt="Discord">
+  <img src="./scene3.gif" width="31%" alt="Discord scene">
 </a>
 
 <br>
 
-<sub>
-🩵 tiktok　　☁️ roblox　　🫧 discord
-</sub>
+<sub>🩵 tiktok　　☁️ roblox　　🫧 discord</sub>
 
 <br><br>
 
-<!-- ✦ BLUE DIVIDER ✦ -->
 <img src="https://capsule-render.vercel.app/api?type=rect&height=2&color=8FC8FF&section=header" width="75%" alt="divider">
 
 <br><br>
 
-<!-- ✦ SECRET ROOM ✦ -->
 <details>
-<summary>
-<b>🩵　୨୧ open my blue room ୨୧　🩵</b>
-</summary>
+<summary><b>🩵　୨୧ open my blue room ୨୧　🩵</b></summary>
 
 <br>
 
-<img src="./rem2.gif" width="55%" alt="Rem">
+<img src="./blue-room.gif" width="55%" alt="Blue room">
 
 <br><br>
 
-<img
-  src="https://readme-typing-svg.demolab.com?font=Nunito&weight=700&size=14&duration=2700&pause=1300&color=AAD7FF&center=true&vCenter=true&width=460&height=34&lines=you+found+my+secret+room+%E2%99%A1;%E2%98%81%EF%B8%8F+it's+comfy+in+here+%E2%98%81%EF%B8%8F;%F0%9F%AB%A7+don't+tell+anyone+%F0%9F%AB%A7"
-  alt="secret text"
-/>
+<sub>🫧　it's comfy in here　🫧</sub>
 
-<br>
+<br><br>
 
 <a href="https://www.tiktok.com/@pstvroffical">
   <img src="https://img.shields.io/badge/♡%20TikTok-pstvroffical-B9DEFF?style=flat-square&labelColor=172033" alt="TikTok">
@@ -91,11 +73,9 @@
 
 <br><br>
 
-<sub>
-૮ ˶ᵔ ᵕ ᵔ˶ ა
+<sub>૮ ˶ᵔ ᵕ ᵔ˶ ა</sub>
 <br>
-🫧 thanks for visiting my little corner 🫧
-</sub>
+<sub>🩵 thanks for visiting my little corner 🩵</sub>
 
 <br><br>
 
@@ -103,25 +83,20 @@
 
 <br>
 
-<!-- ✦ SECOND SECRET ✦ -->
 <details>
-<summary>
-<b>☁️　a tiny secret　☁️</b>
-</summary>
+<summary><b>☁️　a tiny secret　☁️</b></summary>
 
 <br>
 
-<img src="./rem3.gif" width="42%" alt="Rem">
+<img src="./tiny-secret.gif" width="42%" alt="Tiny secret">
 
 <br><br>
 
-<sub>
-🩵 blue hair supremacy 🩵
+<sub>🩵 blue hair supremacy 🩵</sub>
 <br><br>
-you weren't supposed to find this...
+<sub>you weren't supposed to find this...</sub>
 <br>
-୨୧ ˚₊‧꒰ა ♡ ໒꒱ ‧₊˚ ୨୧
-</sub>
+<sub>୨୧ ˚₊‧꒰ა ♡ ໒꒱ ‧₊˚ ୨୧</sub>
 
 <br><br>
 
@@ -129,15 +104,7 @@ you weren't supposed to find this...
 
 <br>
 
-<!-- ✦ FOOTER ✦ -->
 <img src="https://capsule-render.vercel.app/api?type=rect&height=2&color=78B8F5&section=header" width="55%" alt="divider">
-
-<br>
-
-<img
-  src="https://readme-typing-svg.demolab.com?font=Nunito&weight=700&size=12&duration=3800&pause=1800&color=78B8F5&center=true&vCenter=true&width=430&height=32&lines=%E2%99%A1+%E3%80%8C+x+y+p+e+s+%E3%80%8D+%E2%99%A1;%F0%9F%AB%A7+floating+somewhere+online+%F0%9F%AB%A7;%E2%98%81%EF%B8%8F+see+you+again+%E2%98%81%EF%B8%8F"
-  alt="footer"
-/>
 
 <br>
 
