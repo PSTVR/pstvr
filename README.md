@@ -1,47 +1,17 @@
 <div align="center">
 
-<img src="./banner.gif" width="100%" />
-
-<br><br>
-
-# xypes
-
-<sub>somewhere on the internet.</sub>
-
-<br><br>
-
-<img
-  src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=17&duration=2600&pause=900&center=true&vCenter=true&width=520&lines=welcome+to+my+profile.;probably+doing+something+random.;don't+ask+why+I'm+still+awake."
-/>
-
-<br><br>
-
-───────────────
+<img src="./assets/xypes-banner.png" width="100%" alt="xypes anime banner" />
 
 <br>
 
-### about
-
-just **xypes**.
-
-I appear occasionally.
-
-<br>
-
-### elsewhere
-
-**discord** — `xypes.lol`
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&duration=2600&pause=900&color=9CCBFF&center=true&vCenter=true&width=620&lines=somewhere+on+the+internet.;blue+hours+%E2%80%A2+late+nights+%E2%80%A2+xypes.;probably+listening+to+something+right+now." alt="typing animation" />
 
 <br><br>
 
-<img src="https://komarev.com/ghpvc/?username=PSTVR&label=views&style=flat-square" />
+<img src="https://komarev.com/ghpvc/?username=PSTVR&label=visitors&style=flat-square&color=1f6feb" alt="profile views" />
 
 <br><br>
 
-───────────────
-
-<br>
-
-<sub>you found the bottom, congratulations.</sub>
+<sub>「 xypes 」</sub>
 
 </div>
