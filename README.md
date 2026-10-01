@@ -1,60 +1,96 @@
 <div align="center">
 
-# xypes
-
-### developer • designer • professional bug creator
-
-building cool shit and occasionally breaking it.
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=190&text=XYPES&fontAlign=50&fontAlignY=38&desc=developer%20%E2%80%A2%20designer%20%E2%80%A2%20creator&descAlignY=60&animation=fadeIn&section=header" />
 
 <br>
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&duration=2500&pause=700&center=true&vCenter=true&width=500&lines=building+cool+shit.;breaking+cool+shit.;fixing+the+shit+I+just+broke." />
+
+<br><br>
+
+### about me
+
+`developer` • `designer` • `minecraft` • `web` • `desktop`
+
+I make random shit that I think looks cool.
+
+Currently building websites, Minecraft projects and desktop apps.
+
+<br>
+
+### tech
 
 <img src="https://skillicons.dev/icons?i=js,html,css,java,nodejs,python,git,github,vscode&perline=9" />
 
 <br><br>
 
----
-
-### currently
-
-working on **websites, minecraft projects & desktop apps**
-
-learning more about **software engineering & cybersecurity**
-
-probably fixing something that worked 5 minutes ago
-
----
-
 ### projects
 
-**xypes**  
-personal portfolio & random experiments
+<table>
+<tr>
+<td width="33%" align="center">
 
-**FEMCLIENT**  
-custom Minecraft client project
+### XYPES
 
-**AegisJar**  
-defensive Java / Minecraft malware scanner
+Personal portfolio and  
+random web experiments.
 
----
+`HTML` `CSS` `JavaScript`
 
-### languages & tools
+</td>
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=PSTVR&layout=compact&hide_border=true&theme=transparent" />
+<td width="33%" align="center">
+
+### FEMCLIENT
+
+Custom Minecraft  
+client project.
+
+`Java` `Fabric`
+
+</td>
+
+<td width="33%" align="center">
+
+### AegisJar
+
+Defensive Java / Minecraft  
+malware scanner.
+
+`Java` `Security`
+
+</td>
+</tr>
+</table>
 
 <br>
 
-<img src="https://github-readme-stats.vercel.app/api?username=PSTVR&show_icons=true&hide_border=true&theme=transparent" />
+### currently
 
----
+🔨 building **xypes**
 
-### find me
+⚡ learning more about **software engineering**
 
-Discord — **xypes.lol**
+🛡️ experimenting with **cybersecurity**
 
-<img src="https://komarev.com/ghpvc/?username=PSTVR&style=flat-square&label=profile+views" />
+💀 probably debugging something that worked five minutes ago
+
+<br>
+
+### socials
+
+**Discord:** `xypes.lol`
+
+<br>
+
+<img src="https://komarev.com/ghpvc/?username=PSTVR&label=PROFILE+VIEWS&style=flat-square" />
 
 <br><br>
 
-<sub>made with questionable amounts of debugging</sub>
+<sub>built by xypes • somehow the damn thing works</sub>
+
+<br><br>
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=100&section=footer" />
 
 </div>
