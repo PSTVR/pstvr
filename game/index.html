@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>xypes — Blue Petal Catch</title>
+<style>
+  :root{
+    --bg:#07101d;
+    --panel:#0d1a2a;
+    --line:#31577f;
+    --blue:#8fc8ff;
+    --blue2:#c7e5ff;
+    --muted:#7f9bb8;
+    --text:#ecf7ff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(circle at 50% 0%,#102847 0,#091522 38%,#050b13 100%);
+    display:grid;
+    place-items:center;
+    padding:20px;
+  }
+  .wrap{width:min(920px,100%)}
+  .head{
+    display:flex;justify-content:space-between;align-items:end;gap:14px;
+    margin:0 2px 10px;
+  }
+  h1{font-size:clamp(20px,4vw,30px);margin:0;font-weight:700;letter-spacing:.06em}
+  .sub{font-size:13px;color:var(--muted);margin-top:4px}
+  .stats{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .pill{
+    padding:7px 10px;border:1px solid #223c58;background:#091522cc;
+    border-radius:999px;font-size:12px;white-space:nowrap
+  }
+  .stage{
+    position:relative;overflow:hidden;border:1px solid #294765;border-radius:18px;
+    background:#07101d;box-shadow:0 20px 55px #0008;
+  }
+  canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;touch-action:none}
+  .overlay{
+    position:absolute;inset:0;display:grid;place-items:center;
+    background:linear-gradient(#06101ac2,#06101aef);
+    padding:24px;text-align:center;
+  }
+  .card{max-width:490px}
+  .card h2{font-size:clamp(24px,6vw,44px);margin:0 0 8px}
+  .card p{color:#b8cde0;line-height:1.55;margin:0 0 18px}
+  button{
+    appearance:none;border:1px solid #74b8f2;background:#a9d7ff;color:#07101d;
+    font:inherit;font-weight:800;border-radius:999px;padding:11px 22px;cursor:pointer;
+  }
+  button:hover{filter:brightness(1.06)}
+  button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .controls{
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+    margin-top:10px;color:var(--muted);font-size:12px;flex-wrap:wrap
+  }
+  .mobile{display:none;gap:10px;margin-top:12px}
+  .mobile button{
+    flex:1;background:#0c1b2b;color:#cce7ff;border-color:#31577f;
+    min-height:48px;font-size:20px
+  }
+  a{color:#8fc8ff}
+  @media(max-width:650px){
+    .head{align-items:start;flex-direction:column}
+    .stats{justify-content:flex-start}
+    .mobile{display:flex}
+    .controls .keys{display:none}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="head">
+    <div>
+      <h1>BLUE PETAL CATCH</h1>
+      <div class="sub">a tiny xypes game</div>
+    </div>
+    <div class="stats">
+      <div class="pill">score <b id="score">0</b></div>
+      <div class="pill">best <b id="best">0</b></div>
+      <div class="pill">hearts <b id="hearts">3</b></div>
+    </div>
+  </div>
+
+  <section class="stage">
+    <canvas id="game" width="960" height="540" aria-label="Blue Petal Catch game"></canvas>
+    <div class="overlay" id="overlay">
+      <div class="card">
+        <h2 id="ovTitle">catch the blue petals</h2>
+        <p id="ovText">Move left and right. Catch glowing petals and stars. Avoid the dark shards. You have three hearts.</p>
+        <button id="start">play</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="mobile">
+    <button type="button" id="left" aria-label="Move left">←</button>
+    <button type="button" id="right" aria-label="Move right">→</button>
+  </div>
+
+  <div class="controls">
+    <span class="keys">← → / A D / mouse</span>
+    <span>blue petal +1 · star +5 · dark shard −1 heart</span>
+  </div>
+</main>
+
+<script>
+(() => {
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const scoreEl = document.getElementById('score');
+  const bestEl = document.getElementById('best');
+  const heartsEl = document.getElementById('hearts');
+  const overlay = document.getElementById('overlay');
+  const title = document.getElementById('ovTitle');
+  const text = document.getElementById('ovText');
+  const startBtn = document.getElementById('start');
+  const leftBtn = document.getElementById('left');
+  const rightBtn = document.getElementById('right');
+
+  let best = Number(localStorage.getItem('xypesPetalBest') || 0);
+  bestEl.textContent = best;
+
+  let running = false, score = 0, hearts = 3, last = 0, spawnClock = 0;
+  let keys = {left:false,right:false};
+  let items = [], particles = [], stars = [];
+  const player = {x:480,y:475,w:62,h:46,v:0};
+
+  for(let i=0;i<80;i++){
+    stars.push({x:Math.random()*960,y:Math.random()*430,r:Math.random()*1.5+.2,a:Math.random()*.7+.2});
+  }
+
+  function reset(){
+    score=0; hearts=3; items=[]; particles=[];
+    player.x=480; player.v=0; spawnClock=0; last=performance.now();
+    scoreEl.textContent=score; heartsEl.textContent=hearts;
+  }
+
+  function start(){
+    reset(); running=true; overlay.style.display='none';
+    requestAnimationFrame(loop);
+  }
+
+  function end(){
+    running=false;
+    if(score>best){ best=score; localStorage.setItem('xypesPetalBest', best); bestEl.textContent=best; }
+    title.textContent = score >= 25 ? 'that was actually good' : 'game over';
+    text.textContent = `you caught ${score} points. best: ${best}.`;
+    startBtn.textContent='again';
+    overlay.style.display='grid';
+  }
+
+  function spawn(){
+    const roll=Math.random();
+    const type = roll<.72 ? 'petal' : roll<.86 ? 'star' : 'shard';
+    items.push({
+      type,
+      x:35+Math.random()*890,
+      y:-25,
+      s:type==='star'?11:9+Math.random()*7,
+      vy:1.9+Math.random()*2.1+score*.015,
+      rot:Math.random()*Math.PI*2,
+      vr:(Math.random()-.5)*.07,
+      wave:Math.random()*4
+    });
+  }
+
+  function burst(x,y,color,count=10){
+    for(let i=0;i<count;i++){
+      const a=Math.random()*Math.PI*2, sp=1+Math.random()*3;
+      particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,color,r:1+Math.random()*2});
+    }
+  }
+
+  function hit(a,b){
+    return a.x-a.w/2 < b.x+b.s && a.x+a.w/2 > b.x-b.s &&
+           a.y-a.h/2 < b.y+b.s && a.y+a.h/2 > b.y-b.s;
+  }
+
+  function update(dt){
+    const speed=.55*dt;
+    if(keys.left) player.v-=speed;
+    if(keys.right) player.v+=speed;
+    player.v*=Math.pow(.87,dt/16.67);
+    player.x+=player.v*(dt/16.67);
+    player.x=Math.max(player.w/2+10,Math.min(960-player.w/2-10,player.x));
+
+    spawnClock+=dt;
+    const delay=Math.max(260,620-score*4);
+    if(spawnClock>delay){spawnClock=0;spawn();}
+
+    for(const it of items){
+      it.y += it.vy*(dt/16.67);
+      it.rot += it.vr*(dt/16.67);
+      it.x += Math.sin(it.y*.018+it.wave)*.6;
+      if(hit(player,it) && !it.dead){
+        it.dead=true;
+        if(it.type==='petal'){
+          score+=1; burst(it.x,it.y,'#9fd5ff',9);
+        }else if(it.type==='star'){
+          score+=5; burst(it.x,it.y,'#ffffff',18);
+        }else{
+          hearts-=1; burst(it.x,it.y,'#6f7b8b',15);
+        }
+        scoreEl.textContent=score; heartsEl.textContent=hearts;
+        if(hearts<=0) end();
+      }
+    }
+    items=items.filter(it=>!it.dead && it.y<590);
+
+    for(const p of particles){
+      p.x+=p.vx*(dt/16.67); p.y+=p.vy*(dt/16.67);
+      p.vy+=.05*(dt/16.67); p.life-=.025*(dt/16.67);
+    }
+    particles=particles.filter(p=>p.life>0);
+  }
+
+  function petal(x,y,s,rot,color='#9fd5ff'){
+    ctx.save(); ctx.translate(x,y); ctx.rotate(rot);
+    ctx.fillStyle=color; ctx.shadowBlur=14; ctx.shadowColor=color;
+    ctx.beginPath();
+    ctx.moveTo(0,-s);
+    ctx.bezierCurveTo(s*.8,-s*.5,s*.6,s*.65,0,s);
+    ctx.bezierCurveTo(-s*.45,s*.35,-s*.7,-s*.55,0,-s);
+    ctx.fill(); ctx.restore();
+  }
+
+  function drawPlayer(){
+    ctx.save(); ctx.translate(player.x,player.y);
+    ctx.shadowBlur=18; ctx.shadowColor='#76bfff';
+    // body
+    ctx.fillStyle='#132e4c';
+    ctx.beginPath(); ctx.roundRect(-25,0,50,25,12); ctx.fill();
+    // head
+    ctx.fillStyle='#d7efff';
+    ctx.beginPath(); ctx.arc(0,-13,22,0,Math.PI*2); ctx.fill();
+    // blue hair
+    ctx.fillStyle='#83c8ff';
+    ctx.beginPath(); ctx.arc(-2,-18,22,Math.PI,Math.PI*2); ctx.lineTo(20,-9); ctx.quadraticCurveTo(2,2,-18,-6); ctx.closePath(); ctx.fill();
+    // eye
+    ctx.fillStyle='#2f6fa8'; ctx.beginPath(); ctx.arc(7,-13,3.5,0,Math.PI*2); ctx.fill();
+    // ribbon
+    ctx.fillStyle='#b9ddff';
+    ctx.beginPath(); ctx.moveTo(20,-30);ctx.lineTo(34,-36);ctx.lineTo(29,-22);ctx.closePath();ctx.fill();
+    ctx.restore();
+  }
+
+  function draw(){
+    const g=ctx.createLinearGradient(0,0,0,540);
+    g.addColorStop(0,'#071425'); g.addColorStop(.65,'#0a1c30'); g.addColorStop(1,'#06101b');
+    ctx.fillStyle=g; ctx.fillRect(0,0,960,540);
+
+    // moon glow
+    const rg=ctx.createRadialGradient(760,85,0,760,85,170);
+    rg.addColorStop(0,'#9fd6ff30'); rg.addColorStop(1,'#9fd6ff00');
+    ctx.fillStyle=rg; ctx.fillRect(590,0,340,260);
+
+    for(const s of stars){
+      ctx.globalAlpha=s.a; ctx.fillStyle='#d8edff'; ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha=1;
+
+    // distant hills
+    ctx.fillStyle='#0b2139';
+    ctx.beginPath(); ctx.moveTo(0,390);
+    for(let x=0;x<=960;x+=80) ctx.lineTo(x,350+Math.sin(x*.012)*26);
+    ctx.lineTo(960,540);ctx.lineTo(0,540);ctx.fill();
+
+    for(const it of items){
+      if(it.type==='petal') petal(it.x,it.y,it.s,it.rot);
+      if(it.type==='star'){
+        ctx.save();ctx.translate(it.x,it.y);ctx.rotate(it.rot);ctx.fillStyle='#f4fbff';ctx.shadowBlur=18;ctx.shadowColor='#a8d9ff';
+        ctx.beginPath();
+        for(let i=0;i<8;i++){const r=i%2?4:it.s;const a=Math.PI/4*i-Math.PI/2;ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r)}
+        ctx.closePath();ctx.fill();ctx.restore();
+      }
+      if(it.type==='shard'){
+        ctx.save();ctx.translate(it.x,it.y);ctx.rotate(it.rot);ctx.fillStyle='#3a4656';
+        ctx.beginPath();ctx.moveTo(0,-it.s);ctx.lineTo(it.s*.8,it.s*.7);ctx.lineTo(-it.s*.7,it.s*.3);ctx.closePath();ctx.fill();ctx.restore();
+      }
+    }
+
+    drawPlayer();
+
+    for(const p of particles){
+      ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+    }
+    ctx.globalAlpha=1;
+  }
+
+  function loop(t){
+    if(!running) return;
+    const dt=Math.min(35,t-last||16.67); last=t;
+    update(dt); draw();
+    if(running) requestAnimationFrame(loop);
+  }
+
+  function pointerMove(e){
+    if(!running) return;
+    const r=canvas.getBoundingClientRect();
+    player.x=(e.clientX-r.left)/r.width*960;
+  }
+
+  canvas.addEventListener('pointermove',pointerMove);
+  canvas.addEventListener('pointerdown',pointerMove);
+
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a') keys.left=true;
+    if(e.key==='ArrowRight'||e.key.toLowerCase()==='d') keys.right=true;
+  });
+  addEventListener('keyup',e=>{
+    if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a') keys.left=false;
+    if(e.key==='ArrowRight'||e.key.toLowerCase()==='d') keys.right=false;
+  });
+
+  function hold(btn,dir){
+    const on=e=>{e.preventDefault();keys[dir]=true};
+    const off=e=>{e.preventDefault();keys[dir]=false};
+    btn.addEventListener('pointerdown',on);
+    btn.addEventListener('pointerup',off);
+    btn.addEventListener('pointercancel',off);
+    btn.addEventListener('pointerleave',off);
+  }
+  hold(leftBtn,'left'); hold(rightBtn,'right');
+
+  startBtn.addEventListener('click',start);
+  draw();
+})();
+</script>
+</body>
+</html>
