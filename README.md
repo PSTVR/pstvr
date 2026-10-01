@@ -1,16 +1,26 @@
 <div align="center">
 
-<img src="./assets/xypes-banner.png" width="100%" alt="xypes anime banner" />
+<img src="./assets/xypes-banner.png" width="100%" />
 
-<br>
+<br><br><br>
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&duration=2600&pause=900&color=9CCBFF&center=true&vCenter=true&width=620&lines=somewhere+on+the+internet.;blue+hours+%E2%80%A2+late+nights+%E2%80%A2+xypes.;probably+listening+to+something+right+now." alt="typing animation" />
+<img src="https://komarev.com/ghpvc/?username=PSTVR&label=visitors&style=flat-square" />
 
-<br><br>
+<br><br><br>
 
-<img src="https://komarev.com/ghpvc/?username=PSTVR&label=visitors&style=flat-square&color=1f6feb" alt="profile views" />
+<a href="https://www.tiktok.com/@pstvroffical">
+  <img src="https://img.shields.io/badge/TikTok-pstvroffical-111111?style=for-the-badge&logo=tiktok&logoColor=white" />
+</a>
 
-<br><br>
+<a href="https://www.roblox.com/users/3595727417/profile">
+  <img src="https://img.shields.io/badge/Roblox-PSTVR-111111?style=for-the-badge&logo=roblox&logoColor=white" />
+</a>
+
+<a href="https://discord.com/users/1150057914967531651">
+  <img src="https://img.shields.io/badge/Discord-xypes.lol-111111?style=for-the-badge&logo=discord&logoColor=white" />
+</a>
+
+<br><br><br>
 
 <sub>「 xypes 」</sub>
 
